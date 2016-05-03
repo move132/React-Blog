@@ -1,7 +1,12 @@
  
 require("bootstrapCss"); 
 require("../css/comm.scss"); 
-require("./canvasEffecFn");  
+require("../css/component.css");
+require("./canvasEffecFn"); 
+
+
+ 
+
 var Header=require("./component/header");
 var Copyright=require("./component/copyright");
 var Content=require("./component/content");
@@ -11,7 +16,7 @@ var Page=React.createClass({
 	render:function(){
 		return (
 			<div>
-				<Header />
+				<Header /> 
 				<Content />
 				<Copyright />
 			</div>

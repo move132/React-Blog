@@ -52,8 +52,36 @@ canvas{
     padding: 35px;
     position: relative;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s;
-    border-radius:5px;
-    box-shadow: 10px 10px 10px #f6f6f6;
+   /*  border-radius:5px; */
+    box-shadow: 10px 10px 10px #f2f2f2;
+    .post-head-fixed{
+        position:absolute;
+        top:0;
+        left:0;
+
+        .month{
+            background:#e7e7e7;
+            color:#999;
+            text-align:center;
+            float:left;
+            padding:5px;
+            line-height:15px;
+            span{
+                 font-size:12px;
+                 display:block;
+                font-weight:300;
+            }
+            b{
+                font-size:14px;
+            } 
+        }
+         .date_chinese{
+            float:left;
+            padding:12px;
+            font-size:14px;
+            font-weight:600;
+         }
+    }
     &:hover{
         transform: scale(1.01)  translate(0,5px); 
     }
