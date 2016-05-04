@@ -32,11 +32,12 @@ if (pageParam === "release") {  //是否打包音乐文件
  
 module.exports = {
   entry: {
-    index:'./src/js/app.js'
+    index:path.resolve(__dirname, './src/js/app.js'),
+    effecfn:path.resolve(__dirname, './src/js/effecfn_common.js'),
   },
   output: {  
     path:getPath('build'),
-    filename: "js/bundle.js", 
+    filename: "js/[name]_build.js", 
     publicPath: '/build/' 
   },
   module: {
@@ -83,11 +84,9 @@ module.exports = {
         bootstrap:path.join(__dirname, "node_modules/bootstrap/dist/js/bootstrap.min.js"), 
         createjs :path.join(__dirname, "node_modules/easeljs/lib/easeljs-0.8.2.min.js"), 
 
+        modernizr:path.join(__dirname, "src/js/effecfn/modernizr.js"), 
 
-        music_player: path.join(__dirname, "./src/js/component/music_player.js"),
-        music_list_tab :path.join(__dirname, "./src/js/component/music_list_tab.js"),
-        music_list_group :path.join(__dirname, "./src/js/component/music_list_group.js"),
-        tab_component :path.join(__dirname, "./src/js/component/tab_component.js"),
+        
     } 
   }
 };

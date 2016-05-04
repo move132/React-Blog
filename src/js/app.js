@@ -2,15 +2,20 @@
 require("bootstrapCss"); 
 require("../css/comm.scss"); 
 require("../css/component.css");
-require("./canvasEffecFn"); 
 
-
- 
+  
 
 var Header=require("./component/header");
 var Copyright=require("./component/copyright");
 var Content=require("./component/content");
 
+
+
+/*<div>
+	<Header /> 
+	<Content />
+	<Copyright />
+</div>*/
 
 var Page=React.createClass({
 	render:function(){
@@ -18,11 +23,10 @@ var Page=React.createClass({
 			<div>
 				<Header /> 
 				<Content />
-				<Copyright />
+				<Copyright /> 
 			</div>
 		);
 	}
-});
+});  
 
-ReactDOM.render(<Page />,document.getElementById("app"));
-//ReactDOM.render(<Page />,document.body);
+ReactDOM.render(<Page />,document.getElementById("app")); 

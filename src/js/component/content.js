@@ -1,10 +1,4 @@
  
-/*require("../effecfn/modernizr.custom.js"); 
-
-require("../effecfn/classie.js"); 
-require("../effecfn/helper.js"); 
-require("../effecfn/grid3d.js");*/
-
 var Content=React.createClass({
 	render:function(){
 		return (
@@ -105,7 +99,7 @@ var ArticleList=React.createClass({
 					</div>
 				</div> 
 				<div className="content">
-					<div>
+					<div className="content_box">
 						<div className="dummy-img"></div>
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
@@ -138,13 +132,13 @@ var ArticleList=React.createClass({
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 					</div>
-					<div>
+					<div className="content_box">
 						<div className="dummy-img"></div>
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 						<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 					</div> 
 					<span className="loading"></span>
-					<span className="icon close-content"></span>
+					<span className="icon close-content close">×</span> 
 				</div>
 			</section>
 			<div className="article-list" id="list">  
@@ -194,7 +188,7 @@ var ArticleListItem = React.createClass({
 					</p>
 				</div>
 				<div className="post-permalink">
-					<a className="btn btn-success" href="###">阅读全文</a>
+					<a className="btn btn-default" href="###">阅读全文</a>
 				</div>
 
 				<footer className="post-footer clearfix">

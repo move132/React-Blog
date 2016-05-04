@@ -1,23 +1,20 @@
 /**
  * grid3d.js v1.0.0
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2014, Codrops
- * http://www.codrops.com
  */
+var helper=require("./helper");
+var classie=require("./classie"); 
+
+//console.log(classie);
 ;( function( window ) {
 	
 	'use strict';
-	
+	 
 	function grid3D( el, options ) {
 		this.el = el;
-		this.options = extend( {}, this.options );
-  		extend( this.options, options );
+		this.options = helper.extend( {}, this.options );
+  		helper.extend( this.options, options );
   		this._init();
-	}
+	}   
 
 	// any options you might want to configure
 	grid3D.prototype.options = {};
@@ -40,7 +37,7 @@
 		// loading indicator
 		this.loader = this.contentEl.querySelector( 'span.loading' );
 		// support: support for pointer events, transitions and 3d transforms
-		this.support = support.pointerevents && support.csstransitions && support.csstransforms3d;
+		this.support = helper.support.pointerevents && helper.support.csstransitions && helper.support.csstransforms3d;
 		// init events
 		this._initEvents();
 	};
@@ -91,7 +88,7 @@
 		var self = this,
 			loadContent = function() {
 				// simulating loading...
-				setTimeout( function() {
+				setTimeout( function() { 
 					// hide loader
 					classie.removeClass( self.loader, 'show' );
 					// in the end of the transition set class "show" to respective content item
