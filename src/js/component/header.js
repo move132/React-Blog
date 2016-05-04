@@ -29,8 +29,9 @@ var Header=React.createClass({
 						<ul className="nav navbar-nav navbar-right">
 							<form className="navbar-form navbar-left" role="search">
 								<div className="form-group">
-									<input type="text" className="form-control" placeholder="Search" /></div>
-								<button type="submit" className="btn btn-default">搜索</button>
+									<input type="text" className="form-control" placeholder="Search" />
+								</div>
+								<span type="submit" className="btn btn-default btn-search">搜索</span>
 							</form> 
 						</ul>
 					</div>

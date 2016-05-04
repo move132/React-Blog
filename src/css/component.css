@@ -10,7 +10,7 @@ body {
 
 .grid-wrap {
 	margin: 10px auto 0;
-	max-width: 1090px;
+	/* max-width: 1090px; */
 	width: 100%;
 	padding: 0;
 	-webkit-perspective: 1500px;
@@ -30,11 +30,11 @@ body {
 	transform: translateZ(-1500px);
 }
 
-.grid figure,
+/* .grid figure,
 .grid .placeholder {
 	width: 340px;
 	height: 300px;
-}
+} */
 
 .grid figure {
 	margin: 10px;
@@ -180,11 +180,12 @@ body {
 	z-index: 1000;
 	top: 0;
 	right: 10px;
-	font-size: 1.6em;
+	font-size:3em;
+	font-weight: bold;
 	color: #aaa;
 	cursor: pointer;
 	pointer-events: none;
-	padding: 1em;
+	padding:0 15px;
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
@@ -282,7 +283,7 @@ p.dummy-text:nth-child(3) {
 .no-csstransforms3d .close-content,
 .no-csstransitions .close-content {
 	opacity: 1;
-	visibility: visible;
+	/* visibility: visible; */
 	display: none;
 	height: auto;
 }
@@ -303,7 +304,7 @@ p.dummy-text:nth-child(3) {
 	opacity: 1;
 }
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
 
 	.grid figure,
 	.grid .placeholder {
@@ -311,4 +312,4 @@ p.dummy-text:nth-child(3) {
 		height: 212px;
 	}
 
-}
+} */

@@ -84,7 +84,7 @@ module.exports = {
         bootstrap:path.join(__dirname, "node_modules/bootstrap/dist/js/bootstrap.min.js"), 
         createjs :path.join(__dirname, "node_modules/easeljs/lib/easeljs-0.8.2.min.js"), 
 
-        modernizr:path.join(__dirname, "src/js/effecfn/modernizr.js"), 
+        modernizr:path.join(__dirname, "src/js/effecfn/modernizr.custom.js"), 
 
         
     } 
