@@ -5,14 +5,11 @@ var Copyright=React.createClass({
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-12">
+							<h2>MOVECSS</h2>
 							<span>
-								Copyright &copy;
-								<a href="http://www.movecss.com/">move css</a>
-							</span>
-							|
-							<span></span>
-							|
-							<span>粤ICP备16029073号</span>
+								© 2016-2020 MOVECSS 版权所有 
+							</span> 
+							<span className="icp">粤ICP备16029073号</span>
 						</div>
 					</div>
 				</div>

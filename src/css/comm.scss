@@ -12,6 +12,20 @@ body{
 .container{
     max-width:1000px;
 }
+.navbar-nav{
+    margin:0;
+}
+
+.btn-search{ 
+    width:100%;
+}
+@media (min-width: 768px){
+    .btn-search{
+        margin-left:5px;
+        width:60px;
+    }
+}
+
 .page-loading{
     background: #fff url(../image/preloader.gif) no-repeat center center;
     position:fixed;
@@ -244,11 +258,21 @@ canvas{
 .copyright {
     background: #111 none repeat scroll 0 0;
     border-top: 1px solid #303030;
-    color: #555555;
+    color: #999;
     font-size: 13px;
-    padding-bottom: 28px;
-    padding-top: 28px;
-    text-align: center;
+    padding-bottom: 14px;
+    padding-top: 8px; 
+    h2{
+        margin:5px 0;
+        font-size:18px;
+        line-height:30px;
+        font-weight: bold;
+        position: relative; 
+        color:#666;
+    }
+    .icp{
+        margin-left:8px;
+    }
 }
 .tags li{
 	overflow: hidden;
@@ -364,9 +388,7 @@ canvas{
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;;
 }
 
-.btn-search{
-    margin-left:5px;
-}
+
 .con_wrap_box{
     padding:0;
 }
