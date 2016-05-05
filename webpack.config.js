@@ -50,6 +50,12 @@ module.exports = {
       { test: /\.(png|jpg|gif)$/, loader: 'url-loader?name=images/[name].[hash:8].[ext]&limit=92'} // inline base64 URLs for <=8k images, direct URLs for the rest
     ]
   },
+  // 表示这个依赖项是外部lib，遇到require它不需要编译，
+  // 且在浏览器端对应window.React
+  /*externals: [{ 
+      jQuery: 'jquery',
+      $: 'jquery'
+  }],*/
   //devtool:"eval",
   cache:true,
   plugins: [
@@ -57,13 +63,15 @@ module.exports = {
         compress: {
             warnings: false
         } 
-    }), */
+    }), */ 
     new ExtractTextPlugin('css/[name].css'),
-    new webpack.ProvidePlugin({  
+    new webpack.ProvidePlugin({   //不用直接require('文件')
         React: 'react',
-        ReactDOM: 'react-dom',
-        $: 'jquery'
-    }),
+        ReactDOM: 'react-dom',  
+        $: 'jquery', 
+        jQuery: "jquery"
+    }), 
+    
     /*new HtmlWebpackPlugin({           //根据模板插入css/js等生成最终HTML 
         filename:'/index.html',   
         template:'./src/template/music.html', // 模板路径
@@ -77,14 +85,17 @@ module.exports = {
   ],
   resolve: {
       // root: './', //绝对路径
-      extensions: ['', '.js', '.json', '.less','.scss', '.css', "jpg"," gif", "jpeg", "png", 'bmp'], 
-      alias: { 
-        bootstrapCss:path.join(__dirname, "node_modules/bootstrap/dist/css/bootstrap.min.css"), 
-        jquery :path.join(__dirname, "node_modules/jquery/dist/jquery.min.js"), 
+      extensions: ['', '.js','.jsx', '.json', '.less','.scss', '.css', "jpg"," gif", "jpeg", "png", 'bmp'], 
+      modulesDirectories:[
+        'src',
+        'node_modules',
+      ], 
+      alias: {  //
+        bootstrapCss:path.join(__dirname, "node_modules/bootstrap/dist/css/bootstrap.min.css"),  
+        /*jquery :path.join(__dirname, "node_modules/jquery/dist/jquery.min.js"),
         bootstrap:path.join(__dirname, "node_modules/bootstrap/dist/js/bootstrap.min.js"), 
-        createjs :path.join(__dirname, "node_modules/easeljs/lib/easeljs-0.8.2.min.js"), 
-
-        modernizr:path.join(__dirname, "src/js/effecfn/modernizr.custom.js"), 
+    
+        modernizr:path.join(__dirname, "src/js/effecfn/modernizr.custom.js"),*/
 
         
     } 

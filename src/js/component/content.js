@@ -3,7 +3,7 @@ var Content=React.createClass({
 	componentDidMount:function(){ 
 		new grid3D( document.getElementById( 'grid3d' ) );
 	},
-	render:function(){
+	render:function(){  
 		return (
 			 <div className="container">
 				<div className="row">
@@ -11,18 +11,35 @@ var Content=React.createClass({
 						<section className="grid3d vertical" id="grid3d">
 							<div className="grid-wrap">
 								<div className="grid">
-									<figure>
-		 								<ArticleListItem />
-									</figure>
-									<figure>
-										<ArticleListItem />
-									</figure>
-									<figure>
-										<ArticleListItem />
-									</figure>
+									{
+										this.props.data.map(function(item,key){
+											return <figure key={key}>	<ArticleListItem  data={item}/> </figure>
+										})
+									}
 								</div>
 							</div> 
 							<div className="content">
+								{
+									this.props.data.map(function(item,key){
+										return <div className="content_box"  key={key}>  
+													 <p className="dummy-text">{item.desc}</p>
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+													 <p className="dummy-text">{item.desc}</p> 
+
+											   </div>
+									})
+								}
+
 								<div className="content_box">
 									<div className="dummy-img"></div>
 									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
@@ -48,6 +65,13 @@ var Content=React.createClass({
 									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
 								</div> 
+								<div className="content_box">
+									<div className="dummy-img"></div>
+									<p>这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？</p>
+									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
+								</div>
+
 								<span className="loading"></span>
 								<span className="icon close-content close">×</span> 
 							</div>
@@ -85,7 +109,8 @@ var Content=React.createClass({
 							</nav>
 						</div> 
 					</div>
-					<div className="col-md-4">
+					{
+						/**<div className="col-md-4">
 						<div className="col-md-12">
 							<div className="widget">
 								<h4 className="title">热门</h4>
@@ -124,7 +149,8 @@ var Content=React.createClass({
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>**/
+					}
 				</div> 
 			</div>
 		);
@@ -136,11 +162,8 @@ var ArticleList=React.createClass({
 	render:function(){
 		return (  
 			
-			<div className="article-list" id="list">  
-				<ArticleListItem></ArticleListItem>
-				<ArticleListItem></ArticleListItem>
-				<ArticleListItem></ArticleListItem>
-				<ArticleListItem></ArticleListItem>
+			<div className="article-list" id="list"> 
+				<p>++++++++++++++++++++++++++++++++++++++++++++++++++++++</p> 
 				<ArticleListItem></ArticleListItem> 
 			</div> 
 		);
@@ -152,6 +175,10 @@ var ArticleListItem = React.createClass({
 		console.log(val,e.target);
 	},
 	render: function() {
+		var item='';
+		if (this.props.data) {
+			item=this.props.data;
+		};
 		return (
 			<article className="post" onClick={this.articleCLick.bind(this,12001)}>
 				<div className="post-head-fixed">
@@ -165,7 +192,7 @@ var ArticleListItem = React.createClass({
 				</div>
 				<div className="post-head">
 					<h1 className="post-title">
-						<a href="###">Laravel 5.2 正式发布</a>
+						<a href="javascript:;">{item.title}</a>
 					</h1>
 					<div className="post-meta">
 						<span className="author">
@@ -173,12 +200,12 @@ var ArticleListItem = React.createClass({
 							<a href="###">mvoecss</a>
 						</span>
 						•
-						<time title="2015年12月22日星期二凌晨3点58分" datetime="2015年12月22日星期二凌晨3点58分" className="post-date">2016年5月3日 15:47:37</time>
+						<time title={item.time}  className="post-date">{item.time}</time>
 					</div>
 				</div>
 				<div className="post-content">
 					<p>
-						Laravel 5.2 正式版刚刚发布了，前边我们已经发过一篇文章列举了新版本带来的新特性，有兴趣的同学可以再去看一下：Laravel 5.2 要发布了，来看看都有哪些新特性吧 。 话不多说，还是直接 composer install 并看文档吧！
+						{item.desc}
 					</p>
 				</div>
 				<div className="post-permalink">

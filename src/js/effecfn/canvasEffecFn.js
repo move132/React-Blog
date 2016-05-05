@@ -5,16 +5,21 @@ var img=new Image();
 var sprite;
 var canvas=document.createElement("canvas");
 
-$(document).resize(function(){
-	canvas.width=$(document).width(); 
-	canvas.height=$(document).height();  
-});
-window.onload=function(){  
-	//canvas=document.getElementById("canvas"); 
-	
+  
+ 
+
+window.onload=function(){   
 	document.body.appendChild(canvas); 
 	canvas.width=$(document).width();// document.body.scrollWidth;
 	canvas.height=$(document).height(); //document.body.scrollheight; 
+
+	window.onresize=function(){
+		console.log($(document).height());
+		canvas.width=$(document).width(); 
+		canvas.height=$(document).height();
+	}
+
+
 	stage=new createjs.Stage(canvas);
 	stage.addEventListener("stagemousedown",canvasEffecFn.clickCanvas);
 	stage.addEventListener("stagemousemove",canvasEffecFn.moveCanvas); 
