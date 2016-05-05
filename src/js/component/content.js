@@ -7,7 +7,7 @@ var Content=React.createClass({
 		return (
 			 <div className="container">
 				<div className="row">
-					<div className="col-md-8">
+					<div className="col-md-12">
 						<section className="grid3d vertical" id="grid3d">
 							<div className="grid-wrap">
 								<div className="grid">

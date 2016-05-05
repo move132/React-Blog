@@ -24,7 +24,7 @@ var Page=React.createClass({
 		var _this=this;
 		$(function(){
 			$('[data-toggle="tooltip"]').tooltip();
-		}); 
+		});  
 	},
 	articleCLick:function(val,e){ 
 		console.log(val,e.target);
@@ -33,7 +33,7 @@ var Page=React.createClass({
 		return (
 			<div className="page"> 
 				<div className="page-loading">
-
+				<canvas id="canvas"></canvas>
 				</div> 
 				<Header /> 
 				<Content data={this.props.data}/>

@@ -5,18 +5,18 @@ var img=new Image();
 var sprite;
 var canvas=document.createElement("canvas");
 
-  
+//var canvas=document.getElementById("canvas");
  
 
 window.onload=function(){   
 	document.body.appendChild(canvas); 
-	canvas.width=$(document).width();// document.body.scrollWidth;
-	canvas.height=$(document).height(); //document.body.scrollheight; 
+	canvas.width=$(window).width();// document.body.scrollWidth;
+	canvas.height=$(window).height(); //document.body.scrollheight; 
 
 	window.onresize=function(){
-		console.log($(document).height());
-		canvas.width=$(document).width(); 
-		canvas.height=$(document).height();
+		console.log($(window).height());
+		canvas.width=$(window).width(); 
+		canvas.height=$(window).height();
 	}
 
 
@@ -75,4 +75,5 @@ var canvasEffecFn={
 	}
 }
 
+module.exports=canvasEffecFn;
  
