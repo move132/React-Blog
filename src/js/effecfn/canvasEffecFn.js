@@ -18,13 +18,13 @@ window.onload=function(){
 	stage=new createjs.Stage(canvas);
 	stage.addEventListener("stagemousedown",canvasEffecFn.clickCanvas);
 	stage.addEventListener("stagemousemove",canvasEffecFn.moveCanvas); 
-	var data={
-		images:['./image/4.png'],
+	var data={  
+		images:['./image/m.png'], 
 		frames: {width: 10, height: 10, regX: 10, regY:10, spacing:0, margin:0}
 	}
 	sprite=new createjs.Sprite(new createjs.SpriteSheet(data));  
-	createjs.Ticker.setFPS(10);
-	//createjs.Ticker.timingMode = createjs.Ticker.RAF;
+	//createjs.Ticker.setFPS(10);
+	createjs.Ticker.timingMode = createjs.Ticker.TIMEOUT; 
 	createjs.Ticker.addEventListener("tick",canvasEffecFn.tick);
 }
 
@@ -63,10 +63,10 @@ var canvasEffecFn={
 		}
 	},
 	clickCanvas:function(e){ 
-		canvasEffecFn.addS(Math.random()*100+100,stage.mouseX,stage.mouseY,2); 
+		canvasEffecFn.addS(Math.random()*100+200,stage.mouseX,stage.mouseY,2); 
 	},
 	moveCanvas:function(e){
-		canvasEffecFn.addS(Math.random()*2,stage.mouseX,stage.mouseY,1);
+		canvasEffecFn.addS(Math.random()*8,stage.mouseX,stage.mouseY,10);
 	}
 }
 
