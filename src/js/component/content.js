@@ -8,37 +8,51 @@ var Content=React.createClass({
 		};
 	},
 	componentDidMount:function(){  
-		grid=new grid3D( document.getElementById( 'grid3d' ) );
+		grid=new grid3D( document.getElementById( 'grid3d' ),{name:'初始化！！'} );
 	},
 	getMoreData:function(e){
-		var _this=this;
+		var _this=this;  
+		if (e.target.nodeName.toLowerCase() != 'p') {
+			return;
+		};
+
 		e.target.className='ac'; 
 		e.target.innerText='';  
-		e.persist();  //保持EVENT对象到缓存
-
+		e.persist();  //保持EVENT对象到缓存		
 		console.log(e.target);
+
+
 
 		clearTimeout(cleaTime); 
 		cleaTime=setTimeout(function(){
 			$.ajax({
-				url: './js/moive.json',
+				url: './js/moive.json',  
 				type: 'get',
 				dataType: 'json', 
 				data:{pageNum:2},
 				success: function(data) {
 					window.pageNum++;   
 					console.log(window.pageNum);
-					var olddata=_this.state.data;    
-					var newData=olddata.concat(data.splice(window.pageNum*5-1,3));
- 					
+					var olddata=_this.state.data;  
+
+					// console.log(data.splice(window.pageNum*10-1,10).length);
+					if (data.splice(window.pageNum*1-1,1).length == 0) {
+						e.target.className=''; 
+						e.target.innerText='抱歉，没有数据了';
+ 						return;
+ 					};  
+					var newData=olddata.concat(data.splice(window.pageNum*1-1,1));
+
 
 					e.target.className=''; 
 					e.target.innerText='更多';  
 
 					_this.setState({
 						data:newData
-					});   
-					grid=new grid3D( document.getElementById( 'grid3d' ) );
+					});  
+					 
+					 grid._init();
+					//grid=new grid3D( document.getElementById( 'grid3d' ) ,{name:'追加！！！'});
 				} 
 			});
 		}, 2000); 
@@ -194,7 +208,7 @@ function setMonthStr(str){
 
 var ArticleListItem = React.createClass({
 	articleCLick:function(val,e){ 
-		console.log(val,e.target);
+		//console.log(val,e.target);
 	}, 
 	render: function() {
 		var item='';

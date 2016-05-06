@@ -166,26 +166,62 @@ grid3D.prototype._init = function() {
 	// support: support for pointer events, transitions and 3d transforms
 	this.support = support.pointerevents && support.csstransitions && support.csstransforms3d;
 	// init events
-	this._initEvents();
-	console.log(this.gridItems);
+	this._initEvents(); 
 };
 
 grid3D.prototype._initEvents = function() {
 	var self = this;
 	
+
+	 
+	/*this.contentEl = document.getElementById("grid3d").querySelector( 'div.content' );
+	this.gridItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.grid-wrap div.grid' ).children); 
+	this.contentItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.content' ).children);*/
+
+
 	// open the content element when clicking on the main grid items
-	this.gridItems.forEach( function( item, idx ) {
+	this.gridItems.forEach( function( item, idx ) { 
 		item.addEventListener( 'click', function() { 
 			pageHeadhide();
 			self._showContent( idx );
-		} );
-	} );
+		});
+		
+		/*$("body").on("click","figure",function(){
+			pageHeadhide();
+			self._showContent( idx );
+		}); */
+
+		/*(function(idx){
+			item.onclick=function(){
+				pageHeadhide();   
+				self._showContent( idx );
+			}
+		})(idx);*/
+		
+	});
+
+	/*console.log(this.gridItems);
+	for (var i = 0; i < this.gridItems.length; i++) {
+
+		(function(i){
+			self.gridItems[i].onclick=function(){
+				pageHeadhide();
+				self._showContent( i );
+				 
+			}
+		})(i);
+	};*/
+		 
+
+	 
 
 	// close the content element
 	this.close.addEventListener( 'click', function() {
 		pageHeadshow(); 
 		self._hideContent();
 	});
+	
+ 
 
 	if( this.support ) {
 		// window resize
@@ -238,6 +274,7 @@ grid3D.prototype._showContent = function( pos ) {
 		return false;
 	}
 
+	console.log(pos);
 	var currentItem = this.gridItems[ pos ],
 		itemContent = currentItem.innerHTML;
 	
@@ -270,15 +307,10 @@ grid3D.prototype._showContent = function( pos ) {
 	setTimeout( animFn, 25 );
 };
 
-grid3D.prototype._hideContent = function() { 
-	console.log("___",this.contentItems);
-	console.log("=====", [].slice.call( document.getElementById("grid3d").querySelector( 'div.content' ).children ));
+grid3D.prototype._hideContent = function() {  
 	var self = this,
-		contentItem = this.el.querySelector( 'div.content > .show' ),
-		//contentItem = document.getElementById("grid3d").querySelector( 'div.content > .show' ),
+		contentItem = this.el.querySelector( 'div.content > .show' ), 
 		currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
-		
-		//this.contentItems= [].slice.call( document.getElementById("grid3d").querySelector( 'div.content' ).children );
 		 
 
 	classie.removeClass( contentItem, 'show' );
@@ -290,7 +322,7 @@ grid3D.prototype._hideContent = function() {
 
 	classie.removeClass( this.gridWrap, 'view-full' );
 
-	//console.log("_hideContent",  this.gridItems );
+	//console.log("_hideContent",  this.gridItems ); 
 
 	// reset placeholder style values
 	this.placeholder.style.left = currentItem.offsetLeft + 'px';

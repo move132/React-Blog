@@ -88,6 +88,6 @@ $.ajax({
 
  		//console.log(data.splice(2*1-1,1));       
 
- 		ReactDOM.render(<Page data={data.splice(0,2)}/>,document.getElementById("app"));   
+ 		ReactDOM.render(<Page data={data.splice(0,1)}/>,document.getElementById("app"));   
  	}
  }); 
