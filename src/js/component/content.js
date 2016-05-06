@@ -1,7 +1,47 @@
  
+
+var cleaTime,grid;
 var Content=React.createClass({ 
-	componentDidMount:function(){ 
-		new grid3D( document.getElementById( 'grid3d' ) );
+	getInitialState:function(){
+		return {
+			data:this.props.data
+		};
+	},
+	componentDidMount:function(){  
+		grid=new grid3D( document.getElementById( 'grid3d' ) );
+	},
+	getMoreData:function(e){
+		var _this=this;
+		e.target.className='ac'; 
+		e.target.innerText='';  
+		e.persist();  //保持EVENT对象到缓存
+
+		console.log(e.target);
+
+		clearTimeout(cleaTime); 
+		cleaTime=setTimeout(function(){
+			$.ajax({
+				url: './js/moive.json',
+				type: 'get',
+				dataType: 'json', 
+				data:{pageNum:2},
+				success: function(data) {
+					window.pageNum++;   
+					console.log(window.pageNum);
+					var olddata=_this.state.data;    
+					var newData=olddata.concat(data.splice(window.pageNum*5-1,3));
+ 					
+
+					e.target.className=''; 
+					e.target.innerText='更多';  
+
+					_this.setState({
+						data:newData
+					});   
+					grid=new grid3D( document.getElementById( 'grid3d' ) );
+				} 
+			});
+		}, 2000); 
 	},
 	render:function(){  
 		return (
@@ -12,7 +52,7 @@ var Content=React.createClass({
 							<div className="grid-wrap">
 								<div className="grid">
 									{
-										this.props.data.map(function(item,key){
+										this.state.data.map(function(item,key){
 											return <figure key={key}>	<ArticleListItem  data={item}/> </figure>
 										})
 									}
@@ -20,8 +60,9 @@ var Content=React.createClass({
 							</div> 
 							<div className="content">
 								{
-									this.props.data.map(function(item,key){
-										return <div className="content_box"  key={key}>  
+									this.state.data.map(function(item,key){
+										return <div className="content_box"  key={key}> 
+													 <h1>{item.title}</h1>
 													 <p className="dummy-text">{item.desc}</p>
 													 <p className="dummy-text">{item.desc}</p> 
 													 <p className="dummy-text">{item.desc}</p> 
@@ -34,80 +75,17 @@ var Content=React.createClass({
 													 <p className="dummy-text">{item.desc}</p> 
 													 <p className="dummy-text">{item.desc}</p> 
 													 <p className="dummy-text">{item.desc}</p> 
-													 <p className="dummy-text">{item.desc}</p> 
-
+													 <p className="dummy-text">{item.desc}</p>  
 											   </div>
 									})
-								}
-
-								<div className="content_box">
-									<div className="dummy-img"></div>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-								</div>
-								<div className="content_box">
-									<div className="dummy-img"></div>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-								</div> 
-								<div className="content_box">
-									<div className="dummy-img"></div>
-									<p>这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？这也行吗？？？？？</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-									<p className="dummy-text">The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.</p>
-								</div>
-
+								} 
 								<span className="loading"></span>
 								<span className="icon close-content close">×</span> 
 							</div>
 						</section>
-						<ArticleList /> 
-						<div className="pagination_box">
-							<nav>
-								<ul className="pagination">
-									<li>
-										<a href="#" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">1</a>
-									</li>
-									<li>
-										<a href="#">2</a>
-									</li>
-									<li>
-										<a href="#">3</a>
-									</li>
-									<li>
-										<a href="#">4</a>
-									</li>
-									<li>
-										<a href="#">5</a>
-									</li>
-									<li>
-										<a href="#" aria-label="Next">
-											<span aria-hidden="true">&raquo;</span>
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</div> 
+						<div className="more" onClick={this.getMoreData}>
+							<p>更多</p>  
+						</div>  
 					</div>
 					{
 						/**<div className="col-md-4">
@@ -149,7 +127,7 @@ var Content=React.createClass({
 								</div>
 							</div>
 						</div>
-					</div>**/
+					</div>**/  
 					}
 				</div> 
 			</div>
@@ -157,38 +135,93 @@ var Content=React.createClass({
 	}
 });
 
-
-var ArticleList=React.createClass({ 
-	render:function(){
-		return (  
-			
-			<div className="article-list" id="list"> 
-				<p>++++++++++++++++++++++++++++++++++++++++++++++++++++++</p> 
-				<ArticleListItem></ArticleListItem> 
-			</div> 
-		);
-	}
-});
+function setMonthStr(str){ 
+	var time=new Date(str);
+	//console.log(str,time.getDate());
+	var str={};
+	switch(time.getMonth()+1){
+		case 1:
+			str.month='Jan';
+			str.day=time.getDate();
+			break;
+		case 2:
+			str.month='Feb';
+			str.day=time.getDate();
+			break;
+		case 3:
+			str.month='Mar';
+			str.day=time.getDate();
+			break;
+		case 4:
+			str.month='Apr';
+			str.day=time.getDate();
+			break;
+		case 5:
+			str.month='May';
+			str.day=time.getDate();
+			break;
+		case 6:
+			str.month='Jun';
+			str.day=time.getDate();
+			break;
+		case 7:
+			str.month='Jul';
+			str.day=time.getDate();
+			break;
+		case 8:
+			str.month='Aug';
+			str.day=time.getDate();
+			break;
+		case 9:
+			str.month='Sep';
+			str.day=time.getDate();
+			break;
+		case 10:
+			str.month='Oct';
+			str.day=time.getDate();
+			break;
+		case 11:
+			str.month='Nov';
+			str.day=time.getDate();
+			break;
+		case 12:
+			str.month='Dec';
+			str.day=time.getDate();
+			break;
+	} 
+	return str;
+} 
 
 var ArticleListItem = React.createClass({
 	articleCLick:function(val,e){ 
 		console.log(val,e.target);
-	},
+	}, 
 	render: function() {
 		var item='';
 		if (this.props.data) {
 			item=this.props.data;
 		};
+
+		var tags='';
+		if (item.tags) {
+			tags=item.tags.map(function(item,key){
+				return <a key={key} href="###">{item}</a>
+			});
+		};
+		 
 		return (
-			<article className="post" onClick={this.articleCLick.bind(this,12001)}>
+			<article className="post" onClick={this.articleCLick.bind(this,item.id)}>
 				<div className="post-head-fixed">
 					<div className="month">
-						<span>MAR</span>
-						<b>7</b>
+						<span>{setMonthStr(item.time).month}</span>
+						<b>{setMonthStr(item.time).day}</b>
 					</div>
-					<div className="date_chinese">
-						4月18日
-					</div>
+					{
+						/** <div className="date_chinese">
+								4月18日
+							</div>
+						 */
+					}
 				</div>
 				<div className="post-head">
 					<h1 className="post-title">
@@ -196,8 +229,7 @@ var ArticleListItem = React.createClass({
 					</h1>
 					<div className="post-meta">
 						<span className="author">
-							作者：
-							<a href="###">mvoecss</a>
+							作者：mvoecss
 						</span>
 						•
 						<time title={item.time}  className="post-date">{item.time}</time>
@@ -208,17 +240,21 @@ var ArticleListItem = React.createClass({
 						{item.desc}
 					</p>
 				</div>
-				<div className="post-permalink">
-					<a className="btn btn-default" href="###">阅读全文</a>
-				</div>
+				{
+					/*<div className="post-permalink">
+						<a className="btn btn-default" href="###">阅读全文</a>
+					</div>*/
+				}
 
 				<footer className="post-footer clearfix">
-					<div className="pull-left tag-list"> <i className="fa fa-folder-open-o"></i>
-						<a href="###">新版本发布</a>
-						,
-						<a href="###">Laravel 5.2</a>
+					<div className="pull-left tag-list"> <i className="fa fa-folder-open-o"></i> 
+						{ 
+							tags
+						}
 					</div>
-					<div className="pull-right share"></div>
+					<div className="pull-right share">
+
+					</div>
 				</footer>
 			</article>
 		)

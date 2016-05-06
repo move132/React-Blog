@@ -1,5 +1,4 @@
- 
-
+  
 body {
 	position: relative;
 }
@@ -9,13 +8,11 @@ body {
 }
 
 .grid-wrap {
-	/*margin: 10px auto 0;
-	 max-width: 1090px; */
 	width: 100%;
-	padding: 0;
+	padding: 0; 
 	-webkit-perspective: 1500px;
 	perspective: 1500px;
-}
+}   
 
 .grid {
 	position: relative;
@@ -30,11 +27,6 @@ body {
 	transform: translateZ(-1500px);
 }
 
-/* .grid figure,
-.grid .placeholder {
-	width: 340px;
-	height: 300px;
-} */
 
 .grid figure { 
 	display: inline-block;
@@ -45,6 +37,7 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	width:100%;
 }
 
 .grid figure.active {
@@ -141,9 +134,12 @@ body {
 	visibility: visible;
 }
 .content_box{
-	padding-top: 80px;
+	padding-top: 80px; 
 }
-
+.content_box h1{
+	font-size: 25px;
+}  
+ 
 .content > div {
 	z-index: 10;
 	position: absolute;
@@ -209,7 +205,7 @@ body {
 	width: 90%;
 	opacity: 0;
 	-webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
-	transition: opacity 0.5s, transform 0.5s;
+	transition: opacity 0.5s, transform 0.5s; 
 }
 
 .vertical .dummy-img,
@@ -263,7 +259,7 @@ p.dummy-text:nth-child(3) {
 	padding: 10px 0;
 	color: #444;
 	font-size: 1em;
-	font-family: 'Blokk', Arial, serif;
+	font-family: '微软雅黑', Arial, serif;
 }
 
 .dummy-text:last-child {

@@ -139,8 +139,8 @@ function extend( a, b ) {
 function grid3D( el, options ) {
 	this.el = el;
 	this.options = extend( {}, this.options );
-		extend( this.options, options );
-		this._init();
+	extend( this.options, options );
+	this._init();
 }
 
 // any options you might want to configure
@@ -167,6 +167,7 @@ grid3D.prototype._init = function() {
 	this.support = support.pointerevents && support.csstransitions && support.csstransforms3d;
 	// init events
 	this._initEvents();
+	console.log(this.gridItems);
 };
 
 grid3D.prototype._initEvents = function() {
@@ -182,7 +183,7 @@ grid3D.prototype._initEvents = function() {
 
 	// close the content element
 	this.close.addEventListener( 'click', function() {
-		pageHeadshow();
+		pageHeadshow(); 
 		self._hideContent();
 	});
 
@@ -269,11 +270,17 @@ grid3D.prototype._showContent = function( pos ) {
 	setTimeout( animFn, 25 );
 };
 
-grid3D.prototype._hideContent = function() {
+grid3D.prototype._hideContent = function() { 
+	console.log("___",this.contentItems);
+	console.log("=====", [].slice.call( document.getElementById("grid3d").querySelector( 'div.content' ).children ));
 	var self = this,
 		contentItem = this.el.querySelector( 'div.content > .show' ),
+		//contentItem = document.getElementById("grid3d").querySelector( 'div.content > .show' ),
 		currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
-	
+		
+		//this.contentItems= [].slice.call( document.getElementById("grid3d").querySelector( 'div.content' ).children );
+		 
+
 	classie.removeClass( contentItem, 'show' );
 	classie.removeClass( this.contentEl, 'show' );
 	// without the timeout there seems to be some problem in firefox
@@ -282,6 +289,8 @@ grid3D.prototype._hideContent = function() {
 	if( !this.support ) return false;
 
 	classie.removeClass( this.gridWrap, 'view-full' );
+
+	//console.log("_hideContent",  this.gridItems );
 
 	// reset placeholder style values
 	this.placeholder.style.left = currentItem.offsetLeft + 'px';
@@ -300,12 +309,12 @@ grid3D.prototype._hideContent = function() {
 }
 
 // function to create the placeholder
-/*
-<div class="placeholder">
-	<div class="front">[content]</div>
-	<div class="back"></div>
-</div>
-*/
+//
+//<div class="placeholder">
+//	<div class="front">[content]</div>
+//	<div class="back"></div>
+//</div>
+
 grid3D.prototype._createPlaceholder = function( content ) {
 	var front = document.createElement( 'div' );
 	front.className = 'front';
@@ -364,7 +373,8 @@ grid3D.prototype._resizePlaceholder = function() {
 		this.placeholder.style.width = getViewportW() + 'px';
 		this.placeholder.style.height = getViewportH() + 'px';
 	}
-}
+} 
+ 
 
 // add to global namespace
 window.grid3D = grid3D;

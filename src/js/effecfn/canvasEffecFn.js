@@ -4,8 +4,6 @@ var stage;
 var img=new Image();
 var sprite;
 var canvas=document.createElement("canvas");
-
-//var canvas=document.getElementById("canvas");
  
 
 window.onload=function(){   

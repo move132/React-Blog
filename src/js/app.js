@@ -1,8 +1,7 @@
  
 require("bootstrapCss"); 
 require("../css/comm.scss"); 
-require("../css/component.css"); 
-//var $=jQuery=require("jquery");  
+require("../css/component.css");  
  
 require("bootstrap");  
 
@@ -22,7 +21,10 @@ var Mock=require('mockjs');
 var Page=React.createClass({
 	componentDidMount:function(){  
 		var _this=this;
-		$(function(){
+		setTimeout(function(){
+			$("body").removeClass("app_loading").find("#app").fadeIn(600);
+		}, 500);
+		$(function(){ 
 			$('[data-toggle="tooltip"]').tooltip();
 		});  
 	},
@@ -31,10 +33,10 @@ var Page=React.createClass({
 	},
 	render:function(){
 		return (
-			<div className="page"> 
-				<div className="page-loading">
+			<div className="page">  
+			 
 				<canvas id="canvas"></canvas>
-				</div> 
+			 
 				<Header /> 
 				<Content data={this.props.data}/>
 				<Copyright />	 
@@ -42,33 +44,50 @@ var Page=React.createClass({
 		);
 	}
 });  
- 
- $.ajax({
+
+window.pageNum=1; 
+$.ajax({
  	url:'./js/moive.json',
  	type:'get',
  	dataType:'json', 
- 	success:function(data){ console.log(data); 
- 		var html="",list='';
+ 	data:{pageNum:1},
+ 	success:function(data){ 
+ 		/*var html="",list='';
  		for (var i = 0; i < data.json.length; i++) {
  			 
  			html+='<li class="list-group-item" data-toggle="tooltip" data-placement="top" title="'+data.json[i].name+'"><a  href="###">'+data.json[i].name+'</a></li>';
 
- 			//$("#list .articles").prepend(item_tpl.replace(/\{title\}/g,array[i]));
- 		};
+ 		};  
  		 
- 		$(".tags").html(html);
+ 		$(".tags").html(html); */   
 
- 		var list=[];
- 		for (var i = 0; i < data.json.length; i++) {
+ 		/*var list=[];
+ 		for (var i = 0; i < data.json.length; i++) {   
  			var o={};
  			o.title=data.json[i]['title'];
  			o.boxoffice=data.json[i]['boxoffice'];
  			o.time=Mock.Random.date('yyyy-MM-dd HH:mm:ss'); 
- 			o.desc=Mock.Random.cparagraph()+Mock.Random.cparagraph()+Mock.Random.cparagraph(); 
+ 			o.desc=Mock.Random.cparagraph(); 
+ 			o.id="1001"+Mock.mock(/\d{5,5}/);     
+ 			o.tags=Mock.mock(
+					  	[
+						    "Spark",
+							"LTS", 
+							"微框架",
+							"Lumen",
+							"Whoops",
+							"Event"
+						]
+					);  
+    
+ 			list.push(o);  
+ 		};  
+ 		console.log(JSON.stringify(list)); */   
 
- 			list.push(o);
- 		};
- 		console.log(list);
- 		ReactDOM.render(<Page data={list}/>,document.getElementById("app"));  
+ 		//console.log(data.splice(0,1));
+
+ 		//console.log(data.splice(2*1-1,1));       
+
+ 		ReactDOM.render(<Page data={data.splice(0,2)}/>,document.getElementById("app"));   
  	}
  }); 
