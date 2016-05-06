@@ -36,16 +36,16 @@ var Content=React.createClass({
 					var olddata=_this.state.data;  
 
 					// console.log(data.splice(window.pageNum*10-1,10).length);
-					if (data.splice(window.pageNum*1-1,1).length == 0) {
+					if (data.splice(window.pageNum*10-1,10).length == 0) {
 						e.target.className=''; 
 						e.target.innerText='抱歉，没有数据了';
  						return;
  					};  
-					var newData=olddata.concat(data.splice(window.pageNum*1-1,1));
+					var newData=olddata.concat(data.splice(window.pageNum*10-1,10));
 
 
 					e.target.className=''; 
-					e.target.innerText='更多';  
+					e.target.innerText='查看更多';  
 
 					_this.setState({
 						data:newData
@@ -98,7 +98,7 @@ var Content=React.createClass({
 							</div>
 						</section>
 						<div className="more" onClick={this.getMoreData}>
-							<p>更多</p>  
+							<p>查看更多</p>  
 						</div>  
 					</div>
 					{

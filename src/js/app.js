@@ -35,7 +35,7 @@ var Page=React.createClass({
 		return (
 			<div className="page">  
 			 
-				<canvas id="canvas"></canvas>
+				 
 			 
 				<Header /> 
 				<Content data={this.props.data}/>

@@ -6,18 +6,12 @@ var sprite;
 var canvas=document.createElement("canvas");
  
 
-window.onload=function(){   
-	document.body.appendChild(canvas); 
-	canvas.width=$(window).width();// document.body.scrollWidth;
-	canvas.height=$(window).height(); //document.body.scrollheight; 
-
+window.onload=function(){    
+	canvasEffecFn.isCreateCanvas(canvas);
 	window.onresize=function(){
-		console.log($(window).height());
-		canvas.width=$(window).width(); 
-		canvas.height=$(window).height();
+		canvasEffecFn.isCreateCanvas(canvas);
 	}
-
-
+ 
 	stage=new createjs.Stage(canvas);
 	stage.addEventListener("stagemousedown",canvasEffecFn.clickCanvas);
 	stage.addEventListener("stagemousemove",canvasEffecFn.moveCanvas); 
@@ -70,6 +64,16 @@ var canvasEffecFn={
 	},
 	moveCanvas:function(e){
 		canvasEffecFn.addS(Math.random()*8,stage.mouseX,stage.mouseY,10);
+	},
+	isCreateCanvas:function(canvas){
+		document.body.appendChild(canvas); 
+		if ($(window).width() > 768) {
+			console.log($(window).height());
+			canvas.width=$(window).width(); 
+			canvas.height=$(window).height();
+		}else{
+			 document.body.removeChild(canvas);
+		}
 	}
 }
 
