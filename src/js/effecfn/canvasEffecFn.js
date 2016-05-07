@@ -63,7 +63,7 @@ var canvasEffecFn={
 		canvasEffecFn.addS(Math.random()*100+200,stage.mouseX,stage.mouseY,2); 
 	},
 	moveCanvas:function(e){
-		canvasEffecFn.addS(Math.random()*8,stage.mouseX,stage.mouseY,10);
+		canvasEffecFn.addS(Math.random()*1,stage.mouseX,stage.mouseY,1);
 	},
 	isCreateCanvas:function(canvas){
 		document.body.appendChild(canvas); 

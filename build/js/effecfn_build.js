@@ -65,18 +65,12 @@
 	var canvas=document.createElement("canvas");
 	 
 
-	window.onload=function(){   
-		document.body.appendChild(canvas); 
-		canvas.width=$(window).width();// document.body.scrollWidth;
-		canvas.height=$(window).height(); //document.body.scrollheight; 
-
+	window.onload=function(){    
+		canvasEffecFn.isCreateCanvas(canvas);
 		window.onresize=function(){
-			console.log($(window).height());
-			canvas.width=$(window).width(); 
-			canvas.height=$(window).height();
+			canvasEffecFn.isCreateCanvas(canvas);
 		}
-
-
+	 
 		stage=new createjs.Stage(canvas);
 		stage.addEventListener("stagemousedown",canvasEffecFn.clickCanvas);
 		stage.addEventListener("stagemousemove",canvasEffecFn.moveCanvas); 
@@ -128,7 +122,17 @@
 			canvasEffecFn.addS(Math.random()*100+200,stage.mouseX,stage.mouseY,2); 
 		},
 		moveCanvas:function(e){
-			canvasEffecFn.addS(Math.random()*8,stage.mouseX,stage.mouseY,10);
+			canvasEffecFn.addS(Math.random()*1,stage.mouseX,stage.mouseY,1);
+		},
+		isCreateCanvas:function(canvas){
+			document.body.appendChild(canvas); 
+			if ($(window).width() > 768) {
+				console.log($(window).height());
+				canvas.width=$(window).width(); 
+				canvas.height=$(window).height();
+			}else{
+				 document.body.removeChild(canvas);
+			}
 		}
 	}
 
@@ -10161,12 +10165,6 @@
 
 	grid3D.prototype._initEvents = function() {
 		var self = this;
-		
-
-		 
-		/*this.contentEl = document.getElementById("grid3d").querySelector( 'div.content' );
-		this.gridItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.grid-wrap div.grid' ).children); 
-		this.contentItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.content' ).children);*/
 
 
 		// open the content element when clicking on the main grid items
@@ -10175,34 +10173,7 @@
 				pageHeadhide();
 				self._showContent( idx );
 			});
-			
-			/*$("body").on("click","figure",function(){
-				pageHeadhide();
-				self._showContent( idx );
-			}); */
-
-			/*(function(idx){
-				item.onclick=function(){
-					pageHeadhide();   
-					self._showContent( idx );
-				}
-			})(idx);*/
-			
-		});
-
-		/*console.log(this.gridItems);
-		for (var i = 0; i < this.gridItems.length; i++) {
-
-			(function(i){
-				self.gridItems[i].onclick=function(){
-					pageHeadhide();
-					self._showContent( i );
-					 
-				}
-			})(i);
-		};*/
-			 
-
+		}); 
 		 
 
 		// close the content element
@@ -10250,6 +10221,7 @@
 					// in the end of the transition set class "show" to respective content item
 					classie.addClass( self.contentItems[ pos ], 'show' );
 				}, 1000 );
+
 				// show content area
 				classie.addClass( self.contentEl, 'show' );
 				// show loader
@@ -10264,7 +10236,7 @@
 			return false;
 		}
 
-		console.log(pos);
+		 
 		var currentItem = this.gridItems[ pos ],
 			itemContent = currentItem.innerHTML;
 		
@@ -10281,7 +10253,7 @@
 		// and animate it
 		var animFn = function() {
 			// give class "active" to current grid item (hides it)
-			classie.addClass( currentItem, 'active' );
+			classie.addClass( currentItem, 'active' );     
 			// add class "view-full" to the grid-wrap
 			classie.addClass( self.gridWrap, 'view-full' );
 			// set width/height/left/top of placeholder
@@ -10299,9 +10271,11 @@
 
 	grid3D.prototype._hideContent = function() {  
 		var self = this,
-			contentItem = this.el.querySelector( 'div.content > .show' ), 
+			contentItem = this.el.querySelector( 'div.content > .show' ),   //修改
+			//contentItem = document.getElementById("grid3d").querySelector( 'div.content  > .show' ),   
 			currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
 			 
+		 
 
 		classie.removeClass( contentItem, 'show' );
 		classie.removeClass( this.contentEl, 'show' );

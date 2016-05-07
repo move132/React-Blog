@@ -82,11 +82,7 @@ $.ajax({
     
  			list.push(o);  
  		};  
- 		console.log(JSON.stringify(list)); */   
-
- 		//console.log(data.splice(0,1));
-
- 		//console.log(data.splice(2*1-1,1));       
+ 		console.log(JSON.stringify(list)); */          
 
  		ReactDOM.render(<Page data={data.splice(0,1)}/>,document.getElementById("app"));   
  	}

@@ -1,4 +1,4 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 17px;
     height: 17px;
     background-color: transparent;
@@ -18,8 +18,8 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #222;
-    background-clip: content-box
-}
+    background-clip: content-box  
+} */
 body{
 	background:#f4f4f4 no-repeat fixed;  
     font-family: 微软雅黑;
@@ -31,11 +31,16 @@ body{
         }
     }
 }
+figure{margin:0;padding:0;}
+input[type='text']{
+    appearance: none;
+   -webkit-appearance: none;
+}
 #app{
     display: none;
 }
 .container{
-    max-width:700px; 
+    max-width:800px; 
 }
 .navbar-nav{
     margin:0;
@@ -45,8 +50,7 @@ body{
     width:100%;
 }
 .more{
-    margin-bottom: 10%;
-    position: relative;
+    margin-bottom: 10%; 
     p{  
         text-align: center;
         color:#fff;

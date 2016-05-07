@@ -26,18 +26,17 @@ body {
 	-webkit-transform: translateZ(-1500px);
 	transform: translateZ(-1500px);
 }
-
-
+ 
 .grid figure { 
 	display: inline-block;
 	cursor: pointer;
-	-webkit-touch-callout: none;
+	/* -webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
-	width:100%;
+	user-select: none; */
+	width:100%; 
 }
 
 .grid figure.active {
@@ -47,10 +46,14 @@ body {
 .grid .placeholder {
 	pointer-events: none;
 	position: absolute;
+	width: 100%;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	-webkit-transition: all 0.5s ease-out;
 	transition: all 0.5s ease-out;
+
+	-webkit-backface-visibility:hidden;	
+	backface-visibility: hidden;
 }
 
 .placeholder > div {
@@ -58,7 +61,7 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	-webkit-backface-visibility: hidden;
+	-webkit-backface-visibility:hidden;	
 	backface-visibility: hidden;
 }
 
@@ -134,13 +137,28 @@ body {
 	visibility: visible;
 }
 .content_box{
-	padding-top: 80px; 
+	padding-top: 50px; 
 }
-.content_box h1{
-	font-size: 25px;
-}  
  
-.content > div {
+
+.artc_info{
+	max-width: 800px;
+	margin:0 auto;
+	padding:0 15px;
+}
+
+.artc_info h1{
+	font-size: 25px;
+	color:#337ab7;
+	font-weight: 600;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.artc_info img{
+	width: 100%;
+} 
+ 
+.content > div {  
 	z-index: 10;
 	position: absolute;
 	top: 0;
@@ -173,17 +191,25 @@ body {
 .close-content {
 	position: fixed;
 	z-index: 1000;
-	top: 0;
+	top: 10px;
 	right: 10px;
-	font-size:3em;
+	font-size:2em;
 	font-weight: bold;
-	color: #aaa;
+	color: #fff;
 	cursor: pointer;
 	pointer-events: none;
-	padding:0 15px;
+	 
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
+
+
+	background:rgba(0,0,0,.6);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height:38px;
+    text-align: center;
 }
 
 .close-content:hover {
@@ -199,10 +225,8 @@ body {
 
 /* Dummy content */
 
-.dummy-img,
-.dummy-text {
-	max-width: 900px;
-	width: 90%;
+.dummy-img,.dummy-text {
+	 
 	opacity: 0;
 	-webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
 	transition: opacity 0.5s, transform 0.5s; 

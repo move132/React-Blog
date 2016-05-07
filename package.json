@@ -4,7 +4,7 @@
   "description": "React-Blog",
   "main": "src/index.html",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --inline",
+    "start": "webpack-dev-server --progress --colors --hot --inline --port 8080",
     "dev": "set NODE_ENV=production&webpack  --progress --profile --colors",
     "release": "set NODE_ENV=release&webpack  --progress --profile --colors"
   },

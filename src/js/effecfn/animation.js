@@ -171,12 +171,6 @@ grid3D.prototype._init = function() {
 
 grid3D.prototype._initEvents = function() {
 	var self = this;
-	
-
-	 
-	/*this.contentEl = document.getElementById("grid3d").querySelector( 'div.content' );
-	this.gridItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.grid-wrap div.grid' ).children); 
-	this.contentItems=[].slice.call(document.getElementById("grid3d").querySelector( 'div.content' ).children);*/
 
 
 	// open the content element when clicking on the main grid items
@@ -185,34 +179,7 @@ grid3D.prototype._initEvents = function() {
 			pageHeadhide();
 			self._showContent( idx );
 		});
-		
-		/*$("body").on("click","figure",function(){
-			pageHeadhide();
-			self._showContent( idx );
-		}); */
-
-		/*(function(idx){
-			item.onclick=function(){
-				pageHeadhide();   
-				self._showContent( idx );
-			}
-		})(idx);*/
-		
-	});
-
-	/*console.log(this.gridItems);
-	for (var i = 0; i < this.gridItems.length; i++) {
-
-		(function(i){
-			self.gridItems[i].onclick=function(){
-				pageHeadhide();
-				self._showContent( i );
-				 
-			}
-		})(i);
-	};*/
-		 
-
+	}); 
 	 
 
 	// close the content element
@@ -260,6 +227,7 @@ grid3D.prototype._showContent = function( pos ) {
 				// in the end of the transition set class "show" to respective content item
 				classie.addClass( self.contentItems[ pos ], 'show' );
 			}, 1000 );
+
 			// show content area
 			classie.addClass( self.contentEl, 'show' );
 			// show loader
@@ -274,7 +242,7 @@ grid3D.prototype._showContent = function( pos ) {
 		return false;
 	}
 
-	console.log(pos);
+	 
 	var currentItem = this.gridItems[ pos ],
 		itemContent = currentItem.innerHTML;
 	
@@ -291,7 +259,7 @@ grid3D.prototype._showContent = function( pos ) {
 	// and animate it
 	var animFn = function() {
 		// give class "active" to current grid item (hides it)
-		classie.addClass( currentItem, 'active' );
+		classie.addClass( currentItem, 'active' );     
 		// add class "view-full" to the grid-wrap
 		classie.addClass( self.gridWrap, 'view-full' );
 		// set width/height/left/top of placeholder
@@ -309,9 +277,11 @@ grid3D.prototype._showContent = function( pos ) {
 
 grid3D.prototype._hideContent = function() {  
 	var self = this,
-		contentItem = this.el.querySelector( 'div.content > .show' ), 
+		contentItem = this.el.querySelector( 'div.content > .show' ),   //修改
+		//contentItem = document.getElementById("grid3d").querySelector( 'div.content  > .show' ),   
 		currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
 		 
+	 
 
 	classie.removeClass( contentItem, 'show' );
 	classie.removeClass( this.contentEl, 'show' );
