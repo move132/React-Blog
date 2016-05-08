@@ -1,5 +1,7 @@
 # React-Blog
-React-Blog
+	React-Blog
+##prototype	
+
 	var o=[0,1,2];
 	var s=[9,8,7];
 	function P(o){
