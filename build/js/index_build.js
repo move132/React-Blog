@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/build/";
+/******/ 	__webpack_require__.p = "../";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -54,18 +54,19 @@
 	var Header=__webpack_require__(198);
 	var Copyright=__webpack_require__(199);
 	var Content=__webpack_require__(200);
+	var Browser=__webpack_require__(201)
 
-	var Mock=__webpack_require__(201);
+	var Mock=__webpack_require__(202);
 	  
 
 	/*<div>
 		<Header /> 
 		<Content />
 		<Copyright />
-	</div>*/
+	</div>*/  
 
 	var Page=React.createClass({displayName: "Page",
-		componentDidMount:function(){  
+		componentDidMount:function(){   
 			var _this=this;
 			setTimeout(function(){
 				$("body").removeClass("app_loading").find("#app").fadeIn(600);
@@ -80,7 +81,7 @@
 		render:function(){
 			return (
 				React.createElement("div", {className: "page"}, 
-				 
+				 	React.createElement(Browser, null), 
 					 
 				 
 					React.createElement(Header, null), 
@@ -128,7 +129,7 @@
 	    
 	 			list.push(o);  
 	 		};  
-	 		console.log(JSON.stringify(list)); */          
+	 		console.log(JSON.stringify(list)); */     
 
 	 		ReactDOM.render(React.createElement(Page, {data: data.splice(0,1)}),document.getElementById("app"));   
 	 	}
@@ -32640,13 +32641,9 @@
 
 			e.target.className='ac'; 
 			e.target.innerText='';  
-			e.persist();  //保持EVENT对象到缓存		
+			e.persist();  //保持EVENT对象到缓存		   
 			console.log(e.target);
-
-			 
-			$.get("./js/m.json",function(res){  console.log(res);
-			});  
-				
+	 
 
 			clearTimeout(cleaTime); 
 			cleaTime=setTimeout(function(){
@@ -32683,7 +32680,7 @@
 		},
 		render:function(){  
 			return (
-				 React.createElement("div", {className: "container"}, 
+				 React.createElement("div", {className: "container blog_content"}, 
 					React.createElement("div", {className: "row"}, 
 						React.createElement("div", {className: "col-md-12"}, 
 							React.createElement("section", {className: "grid3d vertical", id: "grid3d"}, 
@@ -33150,6 +33147,31 @@
 
 /***/ },
 /* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React) {
+
+	var html=
+					    '<div class="browser-warning">' +
+					        '你的浏览器可能无法正常浏览本站，推荐使用 <a href="http://www.google.com/chrome" target="_blank" title="下载 Chrome 浏览器">Chrome</a>、' +
+					        '<a href="http://www.apple.com/safari" target="_blank" title="下载 Safari 浏览器">Safari</a>、' +
+					        '<a href="http://firefox.com.cn/download/" target="_blank" title="下载 Firefox 浏览器">Firefox</a> 等浏览器，或者升级您的' +
+					        '<a href="http://windows.microsoft.com/zh-CN/internet-explorer/download-ie" target="_blank" title="下载最新版的 Internet Explorer">Internet Explorer</a><a href="javascript:void(0);" class="close-btn">&times;</a>' +
+					    '</div>';
+				   
+	var Browser=React.createClass({displayName: "Browser",
+		render:function(){
+			return ( 
+				React.createElement("div", {dangerouslySetInnerHTML: {__html: html}})  
+			);
+		}
+	});
+
+	module.exports=Browser;   
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {(function webpackUniversalModuleDefinition(root, factory) {

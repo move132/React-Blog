@@ -8,6 +8,7 @@ require("bootstrap");
 var Header=require("./component/header");
 var Copyright=require("./component/copyright");
 var Content=require("./component/content");
+var Browser=require("./component/browser")
 
 var Mock=require('mockjs');
   
@@ -16,10 +17,10 @@ var Mock=require('mockjs');
 	<Header /> 
 	<Content />
 	<Copyright />
-</div>*/
+</div>*/  
 
 var Page=React.createClass({
-	componentDidMount:function(){  
+	componentDidMount:function(){   
 		var _this=this;
 		setTimeout(function(){
 			$("body").removeClass("app_loading").find("#app").fadeIn(600);
@@ -34,9 +35,6 @@ var Page=React.createClass({
 	render:function(){
 		return (
 			<div className="page">  
-			 
-				 
-			 
 				<Header /> 
 				<Content data={this.props.data}/>
 				<Copyright />	 
@@ -82,7 +80,7 @@ $.ajax({
     
  			list.push(o);  
  		};  
- 		console.log(JSON.stringify(list)); */          
+ 		console.log(JSON.stringify(list)); */     
 
  		ReactDOM.render(<Page data={data.splice(0,1)}/>,document.getElementById("app"));   
  	}

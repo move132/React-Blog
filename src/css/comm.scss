@@ -49,6 +49,9 @@ input[type='text']{
 .btn-search{ 
     width:100%;
 }
+
+ 
+   
 .more{
     margin-bottom: 10%; 
     p{  
@@ -174,6 +177,8 @@ canvas{
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s;
    /*  border-radius:5px; */
     box-shadow: 10px 10px 10px #f2f2f2;
+    -webkit-backface-visibility:hidden; 
+    backface-visibility: hidden;
     .post-head-fixed{
         position:absolute;
         top:0;
@@ -487,3 +492,31 @@ canvas{
 .con_wrap_box{
     padding:0;
 }
+
+
+
+.browser-warning {
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    background: #FAF1A5;
+    color: #222;
+    font-size: 14px;
+    position: relative;
+    a{
+        background-color: transparent;
+        color: #337ab7;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    .close-btn {
+        font-size: 26px;
+        color: #D9534F;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        
+    }
+}
+

@@ -38,7 +38,7 @@ module.exports = {
   output: {  
     path:getPath('build'),
     filename: "js/[name]_build.js", 
-    publicPath: '/build/' 
+    publicPath: '../' 
   },
   module: {
     loaders: [
@@ -72,16 +72,16 @@ module.exports = {
         jQuery: "jquery"
     }), 
     
-    /*new HtmlWebpackPlugin({           //根据模板插入css/js等生成最终HTML 
+    new HtmlWebpackPlugin({           //根据模板插入css/js等生成最终HTML 
         filename:'/index.html',   
-        template:'./src/template/music.html', // 模板路径
+        template:'./src/index.html', // 模板路径 
         inject:false,  //允许插件修改包括head与body
         hash:true,  
         minify:{  //压缩HTML文件
           removeComments:true,  //移除 注释
-          collapseWhitespace:true //删除空白符与换行符
+          //collapseWhitespace:true //删除空白符与换行符
         }
-    })*/
+    })
   ],
   resolve: {
       // root: './', //绝对路径

@@ -1,6 +1,6 @@
 
 
-var Login=React.createClassName({
+var Login=React.createClass({
 	render:function(){
 		return (
 			<div className="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

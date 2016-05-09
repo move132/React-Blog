@@ -18,13 +18,9 @@ var Content=React.createClass({
 
 		e.target.className='ac'; 
 		e.target.innerText='';  
-		e.persist();  //保持EVENT对象到缓存		
+		e.persist();  //保持EVENT对象到缓存		   
 		console.log(e.target);
-
-		 
-		$.get("./js/m.json",function(res){  console.log(res);
-		});  
-			
+ 
 
 		clearTimeout(cleaTime); 
 		cleaTime=setTimeout(function(){
@@ -61,7 +57,7 @@ var Content=React.createClass({
 	},
 	render:function(){  
 		return (
-			 <div className="container">
+			 <div className="container blog_content">
 				<div className="row">
 					<div className="col-md-12">
 						<section className="grid3d vertical" id="grid3d">

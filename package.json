@@ -4,7 +4,7 @@
   "description": "React-Blog",
   "main": "src/index.html",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --inline --port 8080",
+    "start": "set NODE_ENV=dev&webpack-dev-server --progress --colors --hot --inline --port 8080",
     "dev": "set NODE_ENV=production&webpack  --progress --profile --colors",
     "release": "set NODE_ENV=release&webpack  --progress --profile --colors"
   },
@@ -20,6 +20,9 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "fs": "0.0.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
     "html-webpack-plugin": "^2.15.0",
     "jquery": "^2.2.3",
     "jquery-mousewheel": "^3.1.13",
@@ -31,6 +34,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "sass-loader": "^3.2.0",
+    "source-map": "^0.5.6",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
