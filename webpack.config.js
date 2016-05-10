@@ -36,6 +36,7 @@ module.exports = {
     effecfn:path.resolve(__dirname, './src/js/effecfn_common.js'),
   },
   output: {  
+    //publicPath: "http://127.0.0.1:9090/static/dist/", 
     path:getPath('build'),
     filename: "js/[name]_build.js", 
     publicPath: '../' 
@@ -52,7 +53,7 @@ module.exports = {
   },
   // 表示这个依赖项是外部lib，遇到require它不需要编译，
   // 且在浏览器端对应window.React
-  /*externals: [{ 
+  /*externals: [{ //页面需要引入<script src="xx.js"></script>
       jQuery: 'jquery',
       $: 'jquery'
   }],*/
@@ -65,13 +66,14 @@ module.exports = {
         } 
     }), */ 
     new ExtractTextPlugin('css/[name].css'),
-    new webpack.ProvidePlugin({   //不用直接require('文件')
+    new webpack.ProvidePlugin({   //不用直接require('文件')  全局变量别名 配合 resolve:{}使用
         React: 'react',
         ReactDOM: 'react-dom',  
         $: 'jquery', 
         jQuery: "jquery"
     }), 
-    
+    //将公共代码抽离出来合并为一个文件 
+    new webpack.optimize.CommonsChunkPlugin('./js/common.js'), 
     new HtmlWebpackPlugin({           //根据模板插入css/js等生成最终HTML 
         filename:'/index.html',   
         template:'./src/index.html', // 模板路径 
