@@ -10014,11 +10014,11 @@
 
 
 	function pageHeadhide(){
-		var navbar=document.querySelector(".navbar-fixed-top");
+		var navbar=document.querySelector(".navbar-fixed-top"); 
 		navbar.style.display='none'; 
 	}
 	function pageHeadshow(){
-		var navbar=document.querySelector(".navbar-fixed-top");
+		var navbar=document.querySelector(".navbar-fixed-top"); 
 		navbar.style.display='block'; 
 	}
 	function scrollX() {
