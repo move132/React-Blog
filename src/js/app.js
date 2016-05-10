@@ -9,10 +9,9 @@ var Header=require("./component/header");
 var Copyright=require("./component/copyright");
 var Content=require("./component/content");
 var Browser=require("./component/browser")
-
+var ScrollTop=require('./component/scrollTop');
 var Mock=require('mockjs');
-  
-
+    
 /*<div>
 	<Header /> 
 	<Content />
@@ -20,21 +19,44 @@ var Mock=require('mockjs');
 </div>*/  
 
 var Page=React.createClass({
+	scrollTotop:function(){
+		var _top=$(window).scrollTop(); 
+	 	if ( _top > 150) {
+	 		$(".scroll").removeClass("none").addClass("visib");
+	 	}else{
+	 		$(".scroll").removeClass("visib").addClass("none");
+	 	}
+	},
 	componentDidMount:function(){   
 		var _this=this;
 		setTimeout(function(){
 			$("body").removeClass("app_loading").find("#app").fadeIn(600);
 		}, 500);
-		$(function(){ 
-			$('[data-toggle="tooltip"]').tooltip();
-		});  
+		this.scrollTotop();
+		$(window).scroll(function(){
+			this.scrollTotop();
+		}.bind(this)); 
+		$(".scroll").on("click",function(e){  
+			 $('html, body').animate({
+		        scrollTop: 0
+		    }, 500);
+		});
+
+		/*$(function(){ 
+			$('[data-toggle="tooltip"]').tooltip(); 
+		}); */ 
 	},
 	articleCLick:function(val,e){ 
 		console.log(val,e.target);
 	},
+	handleLeftSwipe: function (e) {
+	   console.log(e);
+	},
 	render:function(){
 		return (
 			<div className="page">  
+			 	<ScrollTop />
+			 	 
 				<Header /> 
 				<Content data={this.props.data}/>
 				<Copyright />	 
