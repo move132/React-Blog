@@ -1,5 +1,6 @@
 var fs=require("fs");
-var path = require('path'); 
+var path = require('path');
+console.log(path);
 function getEntry(srcDir) {
   var jsPath = path.resolve(srcDir, 'js');
   var dirs = fs.readdirSync(jsPath);

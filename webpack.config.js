@@ -73,7 +73,7 @@ module.exports = {
         jQuery: "jquery"
     }), 
     //将公共代码抽离出来合并为一个文件 
-    new webpack.optimize.CommonsChunkPlugin('./js/common.js'), 
+    //new webpack.optimize.CommonsChunkPlugin('./js/common.js'), 
     new HtmlWebpackPlugin({           //根据模板插入css/js等生成最终HTML 
         filename:'/index.html',   
         template:'./src/index.html', // 模板路径 
