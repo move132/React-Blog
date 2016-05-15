@@ -18,7 +18,8 @@ module.exports = function (grunt) {
 			      //{expand: true, cwd: 'src/', src: ['**'], dest: 'dest/'},
 
 			      // flattens results to a single level
-			      {expand: true, flatten: true, src: ['src/**'], dest: 'dest/', filter: 'isFile'},
+			      {expand: true, flatten: true, src: ['src/js/lib/easeljs-0.8.2.min.js'], dest: 'build/js/lib/', filter: 'isFile'},
+			      {expand: true, flatten: true, src: ['src/js/moive.json'], dest: 'build/js/', filter: 'isFile'},
 			    ]
 		  	}
 		}
