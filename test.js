@@ -1,3 +1,7 @@
+/**
+ * [fs description]
+ * @type {[type]}
+ */
 var fs=require("fs");
 var path = require('path');
 console.log(path);
