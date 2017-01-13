@@ -48,7 +48,7 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css") },
       { test: /\.json$/, loader: 'file?name=js/[name].[ext]' }, 
       { test: /\.woff|\.woff2|\.svg|.eot|.otf|\.ttf/, loader : 'url?name=/fonts/[name].[ext]&prefix=font/&limit=10000'},
-      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?name=images/[name].[hash:8].[ext]&limit=92'} // inline base64 URLs for <=8k images, direct URLs for the rest
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?name=image/[name].[hash:8].[ext]&limit=92'} // inline base64 URLs for <=8k images, direct URLs for the rest
     ]
   },
   // 表示这个依赖项是外部lib，遇到require它不需要编译，
